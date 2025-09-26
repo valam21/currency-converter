@@ -1,10 +1,17 @@
 // src/app/api/rates/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 
+// NOUVELLE INTERFACE : Définit la structure des données de taux
+interface RateResponseData {
+  base: string;
+  rates: Record<string, number>;
+  timestamp: number;
+}
+
+// Mettez à jour l'interface RateCache (anciennement ligne 4)
 interface RateCache {
   [key: string]: {
-    data: any;
+    data: RateResponseData; // Remplacé 'any' par 'RateResponseData'
     timestamp: number;
   };
 }
@@ -18,7 +25,7 @@ const API_ENDPOINTS = [
   'https://api.currencyapi.com/v3/latest',
 ];
 
-async function fetchFromAPI(base: string): Promise<any> {
+async function fetchFromAPI(base: string): Promise<RateResponseData> { // Remplacé 'any' par 'RateResponseData'
   const errors: string[] = [];
 
   // Try primary API (ExchangeRate-API - free tier)
@@ -190,4 +197,5 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
 

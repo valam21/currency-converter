@@ -1,6 +1,6 @@
 // src/utils/helpers.ts
 
-import { Currency, CacheItem } from '@/types/currency';
+import { CacheItem } from '@/types/currency';
 
 export const formatCurrency = (
   amount: number,
@@ -29,6 +29,8 @@ export const generateId = (): string => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
 
+// Ajoutez ce commentaire pour désactiver la règle 'no-explicit-any' sur cette ligne
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const debounce = <T extends (...args: any[]) => any>(
   func: T,
   delay: number
@@ -212,3 +214,4 @@ export const clearExpiredCache = (): void => {
     // Ignore cleanup errors
   }
 };
+

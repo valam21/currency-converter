@@ -2,7 +2,6 @@
 
 'use client';
 
-import { useState } from 'react';
 import { TrendingUp, Wifi, WifiOff, Clock, AlertCircle } from 'lucide-react';
 import { useOnlineStatus } from '@/hooks/useOnlineStatus';
 import { useCurrencyStore } from '@/store/currencyStore';
@@ -81,7 +80,7 @@ export default function Header() {
             <div className="flex items-center space-x-2 text-yellow-800 text-sm">
               <AlertCircle className="w-4 h-4" />
               <span>
-                You're offline. Showing last cached exchange rates.
+                You&apos;re offline. Showing last cached exchange rates. // CORRECTION ICI
               </span>
             </div>
           </div>
@@ -104,3 +103,5 @@ export default function Header() {
     </header>
   );
 }
+
+

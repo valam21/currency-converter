@@ -1,11 +1,18 @@
 // src/app/api/history/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 
-// Interface pour le cache des taux historiques
+// NOUVELLE INTERFACE : Définit la structure des données historiques (lignes 4-13)
+interface HistoricalRateData {
+  from: string;
+  to: string;
+  rates: { date: string; rate: number }[];
+  period: string;
+}
+
+// Mettez à jour l'interface RateCache (anciennement ligne 4)
 interface RateCache {
   [key: string]: {
-    data: any;
+    data: HistoricalRateData; // Remplacé 'any' par 'HistoricalRateData'
     timestamp: number;
   };
 }
@@ -145,3 +152,5 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+
